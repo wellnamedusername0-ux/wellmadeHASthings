@@ -339,6 +339,16 @@ if st.button("시간표 생성", type="primary"):
 
             st.dataframe(df, use_container_width=True)
 
+csv_data = df.to_csv(encoding="utf-8-sig")
+
+st.download_button(
+    label="이 시간표를 CSV로 저장",
+    data=csv_data,
+    file_name=f"timetable_{i + 1}.csv",
+    mime="text/csv",
+    key=f"download_csv_{i}",
+)
+            
             st.write("#### 과목별 배정 블록")
             block_df = pd.DataFrame(
                 {
